@@ -1,10 +1,16 @@
-#Ordenamiento
-# Solicitar al usuario que ingrese dos números
-numero1 = int(input("Ingrese numero: "))
-numero2 = int(input("Ingrese numero: "))
+#Letra o numero
+# Solicitar al usuario que ingrese un carácter
+caracter = input("Ingrese caracter: ")
 
-# Ordenar y mostrar los números
-if numero1 < numero2:
-    print(numero1, numero2)
+# Verificar si es una letra
+if caracter.isalpha():
+    if caracter.isupper():
+        print("Es letra mayúscula.")
+    else:
+        print("Es letra minúscula.")
+# Verificar si es un número
+elif caracter.isdigit():
+    print("Es número.")
+# Si no es ni letra ni número
 else:
-    print(numero2, numero1)
+    print("No es letra ni número.")
