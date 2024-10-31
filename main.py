@@ -1,39 +1,24 @@
-#calculadora
-# Función para realizar la operación
-def calcular(operando1, operador, operando2):
-    if operador == '+':
-        return operando1 + operando2
-    elif operador == '-':
-        return operando1 - operando2
-    elif operador == '*':
-        return operando1 * operando2
-    elif operador == '/':
-        if operando2 != 0:
-            return operando1 / operando2
-        else:
-            return "Error: División por cero."
-    elif operador == '**':
-        return operando1 ** operando2
-    else:
-        return "Operador no válido."
+#edad
+from time import localtime
 
-# Ciclo para permitir múltiples operaciones
-while True:
-    # Solicitar al usuario que ingrese un operando, operador y segundo operando
-    try:
-        operando1 = float(input("Operando: "))
-        operador = input("Operador: ")
-        operando2 = float(input("Operando: "))
+# Obtener la fecha actual
+t = localtime()
+dia_actual = t.tm_mday
+mes_actual = t.tm_mon
+anno_actual = t.tm_year
 
-        # Calcular el resultado
-        resultado = calcular(operando1, operador, operando2)
+# Solicitar al usuario que ingrese su fecha de nacimiento
+print("Ingrese su fecha de nacimiento.")
+dia_nacimiento = int(input("Día: "))
+mes_nacimiento = int(input("Mes: "))
+anno_nacimiento = int(input("Año: "))
 
-        # Mostrar el resultado
-        print(f"{operando1} {operador} {operando2} = {resultado}")
-    except ValueError:
-        print("Error: Entrada no válida. Asegúrese de ingresar números reales.")
-    
-    # Preguntar si desea continuar
-    continuar = input("¿Desea realizar otra operación? (s/n): ")
-    if continuar.lower() != 's':
-        break
+# Calcular la edad
+edad = anno_actual - anno_nacimiento
+
+# Ajustar la edad si el cumpleaños no ha ocurrido aún este año
+if (mes_nacimiento > mes_actual) or (mes_nacimiento == mes_actual and dia_nacimiento > dia_actual):
+    edad -= 1
+
+# Mostrar la edad del usuario
+print(f"Usted tiene {edad} años.")
