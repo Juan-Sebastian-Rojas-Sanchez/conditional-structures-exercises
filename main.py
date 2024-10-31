@@ -1,39 +1,32 @@
-#set de tenis
-def verificar_set(juegos_a, juegos_b):
-    # Comprobar si el resultado es inválido
-    if (juegos_a >= 7 and juegos_b >= 6) or (juegos_b >= 7 and juegos_a >= 6):
-        print("Invalido")
-    # Comprobar si A ganó el set
-    elif juegos_a >= 6 and juegos_a - juegos_b >= 2:
-        print("Gano A")
-    # Comprobar si B ganó el set
-    elif juegos_b >= 6 and juegos_b - juegos_a >= 2:
-        print("Gano B")
-    # Comprobar si el set está empatado a 5
-    elif juegos_a == 5 and juegos_b == 5:
-        print("Aun no termina")
-    # Comprobar si el set está empatado a 6
-    elif juegos_a == 6 and juegos_b == 6:
-        print("Aun no termina")
-    # Si el set todavía no ha terminado
-    elif juegos_a < 6 and juegos_b < 6:
-        print("Aun no termina")
+#triangulos
+def tipo_triangulo(a, b, c):
+    # Verificar si es un triángulo válido
+    if a + b > c and a + c > b and b + c > a:
+        # Determinar el tipo de triángulo
+        if a == b == c:
+            return "El triángulo es equilátero."
+        elif a == b or a == c or b == c:
+            return "El triángulo es isósceles."
+        else:
+            return "El triángulo es escaleno."
     else:
-        print("Invalido")
+        return "No es un triángulo válido."
 
 # Ciclo para permitir múltiples entradas
 while True:
     try:
-        juegos_a = int(input("Juegos ganados por A: "))
-        juegos_b = int(input("Juegos ganados por B: "))
+        a = float(input("Ingrese a: "))
+        b = float(input("Ingrese b: "))
+        c = float(input("Ingrese c: "))
         
-        # Verificar el estado del set
-        verificar_set(juegos_a, juegos_b)
+        # Verificar el tipo de triángulo
+        resultado = tipo_triangulo(a, b, c)
+        print(resultado)
         
     except ValueError:
-        print("Error: Ingrese un número entero válido.")
+        print("Error: Ingrese un número válido.")
     
     # Preguntar si desea continuar
-    continuar = input("¿Desea verificar otro set? (s/n): ")
+    continuar = input("¿Desea verificar otro triángulo? (s/n): ")
     if continuar.lower() != 's':
         break
